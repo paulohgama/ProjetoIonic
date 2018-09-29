@@ -1,17 +1,33 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Cadastro
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+    <form padding [formGroup]="cadastroForm" (ngSubmit)="cadastro()" novalidate>
+        <ion-list>
+    
+          <ion-item>
+            <ion-input [(ngModel)]="nome" formControlName="nome" type="text" placeholder="Nome" clearInput clearOnEdit="false"></ion-input>
+        </ion-item>
+    
+          <ion-item>
+              <ion-input [(ngModel)]="email" formControlName="email" type="text" placeholder="E-mail" clearInput clearOnEdit="false"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-input [(ngModel)]="password" formControlName="password" type="password" placeholder="Senha" clearInput clearOnEdit="false"></ion-input>
+            </ion-item>
+          
+          <ion-item>
+            <ion-input [(ngModel)]="confpassword" formControlName="confpassword" type="password" placeholder="Confirmação Senha" clearInput clearOnEdit="false"></ion-input>
+          </ion-item>
+        
+        </ion-list>
+          <button ion-button color="primary" block type="submit">Cadastrar</button>
+          <h6 *ngIf="errorEmail" class="error">{{message}}</h6>
+    </form>
 </ion-content>
